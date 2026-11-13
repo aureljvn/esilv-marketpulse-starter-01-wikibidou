@@ -2,7 +2,6 @@ from pathlib import Path
 import csv
 import json
 
-
 DATA_DIR = Path("data/sample")
 
 # These starter values mirror config/settings.yml.
@@ -41,17 +40,14 @@ def get_last_close(prices):
 def display_market_summary(asset, prices, show_currency=True):
     first_close = get_first_close(prices)
     last_close = get_last_close(prices)
+    currency = f" {asset['currency']}" if show_currency else ""
 
     print(f"{asset['ticker']} - {asset['name']}")
-
-    if show_currency:
-        print(f"First close: {first_close} {asset['currency']}")
-        print(f"Last close: {last_close} {asset['currency']}")
-    else:
-        print(f"First close: {first_close}")
-        print(f"Last close: {last_close}")
-
-    print(f"Observations: {len(prices)}")
+    print(f"Observations : {len(prices)}")
+    print(f"First date   : {get_first_date(prices)}")
+    print(f"Last date    : {get_last_date(prices)}")
+    print(f"First close  : {first_close:.2f}{currency}")
+    print(f"Last close   : {last_close:.2f}{currency}")
 
 
 def get_first_date(prices):
@@ -83,10 +79,6 @@ def main():
     display_market_summary(benchmark, benchmark_prices, show_currency=False)
     print()
     print(f"Period: {LOOKBACK_LABEL}")
-    print(
-        f"Dates: {get_first_date(instrument_prices)}"
-        f" -> {get_last_date(instrument_prices)}"
-    )
     print(f"Interval: {INTERVAL_LABEL}")
 
 
