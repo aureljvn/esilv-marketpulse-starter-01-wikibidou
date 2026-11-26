@@ -3,9 +3,10 @@
 Branch: Leblois-Côme
 
 ## Evidence
-- 01_terminal_python.png: MarketPulse runs (python src/main.py), showing the
-  instrument and benchmark summary (first/last dates and closes for AAPL and SP500).
-- 02_git_status_log.png: git status and git log --oneline showing my commits.
+- 01_terminal_python.png: MarketPulse runs (python src/main.py) at commit 2100baa
+  (end of Checkpoint Phase A), showing market, observations, first/last dates and
+  closes for AAPL and SP500.
+- 02_git_status_log.png: git log --oneline --author="Come Leblois" showing my commits.
 - 03_branch_merge.png: feature branch merged into my working branch (TD04).
 
 ## My commits
