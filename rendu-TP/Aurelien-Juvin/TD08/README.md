@@ -23,3 +23,10 @@
 - Canonical ticker (SP500) vs provider symbol (^GSPC).
 - The provider normalizes Yahoo data into the same row format as the CSV,
   so the analytics layer works unchanged.
+
+## Checkpoint B notes
+- 01_pull_request.png: my PR #2 "feat: display data provider label" (feature/display-provider-label -> main), reviewed by Come (sawee4), merged.
+- 02_code_review.png: my review of Come's PR #1 "feat: display market metadata".
+- Both reviews were submitted with the "Request changes" status by mistake, while their content was an approval
+  (no blocking issue found). I confirmed my approval in a follow-up "approved" comment.
+- The team worked in pairs for TD05-TD06: Gabin did not open a PR, so the review rotation was Aurelien <-> Come.
