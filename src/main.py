@@ -1,6 +1,7 @@
 from pathlib import Path
 import csv
 import json
+import yfinance as yf
 
 from analytics import (
     align_series,
@@ -115,6 +116,14 @@ def main():
 
     instrument_base_100 = calculate_base_100(aligned_instrument)
     benchmark_base_100 = calculate_base_100(aligned_benchmark)
+
+    history = yf.Ticker("AAPL").history(
+    period="1mo",
+    interval="1d",
+    auto_adjust=False,
+)
+
+    print(history.head())
 
     print("=== MarketPulse ===")
     print()
