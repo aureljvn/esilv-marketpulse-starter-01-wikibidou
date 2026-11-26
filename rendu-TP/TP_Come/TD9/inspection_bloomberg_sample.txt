@@ -1,0 +1,5 @@
+Access mode : approved_sample | live : False
+instrument : AAPL US Equity -> AAPL | 21 obs | 2026-09-01 -> 2026-09-30
+   first : {'observation_date': '2026-09-01', 'open_value': 249.2, 'high_value': 251.5, 'low_value': 248, 'close_value': 250, 'volume_value': 38000000}
+benchmark : SPX Index -> SP500 | 21 obs | 2026-09-01 -> 2026-09-30
+   first : {'observation_date': '2026-09-01', 'open_value': 6592, 'high_value': 6615, 'low_value': 6580, 'close_value': 6600, 'volume_value': 0}

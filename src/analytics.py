@@ -1,7 +1,7 @@
-"""Provider-neutral comparison analytics for MarketPulse.
+"""Provider-neutral comparison logic for MarketPulse.
 
 Every function receives canonical rows (date, ticker, open, high, low,
-close, volume) with numeric close values. No provider or ticker name
+close, volume) with numeric values. No provider-specific identifier
 belongs in this module.
 """
 
@@ -42,6 +42,13 @@ def calculate_period_return(prices):
     return (last_close / first_close - 1) * 100
 
 
+def calculate_relative_performance(
+    instrument_return,
+    benchmark_return,
+):
+    return instrument_return - benchmark_return
+
+
 def calculate_base_100(prices):
     first_close = prices[0]["close"]
     result = []
@@ -54,10 +61,3 @@ def calculate_base_100(prices):
         })
 
     return result
-
-
-def calculate_relative_performance(
-    instrument_return,
-    benchmark_return,
-):
-    return instrument_return - benchmark_return

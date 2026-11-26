@@ -1,6 +1,14 @@
+"""Yahoo Finance provider for MarketPulse (via the community library yfinance).
+
+This module is the provider boundary: it knows the Yahoo symbols
+(e.g. ^GSPC) and converts Yahoo output into canonical MarketPulse rows.
+"""
+
 import yfinance as yf
 
+PROVIDER_LABEL = "Yahoo Finance via yfinance"
 
+# Canonical MarketPulse ticker -> Yahoo Finance symbol
 YAHOO_SYMBOLS = {
     "AAPL": "AAPL",
     "SP500": "^GSPC",
