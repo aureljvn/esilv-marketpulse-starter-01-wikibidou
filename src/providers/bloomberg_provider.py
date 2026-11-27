@@ -14,7 +14,7 @@ import json
 PROVIDER_LABEL = "Bloomberg stage"
 ACCESS_MODE = "APPROVED_SAMPLE"
 
-SAMPLE_PATH = Path("data/sample/bloomberg_reference_sample.json")
+SAMPLE_PATH = Path(__file__).resolve().parents[2] / "data" / "sample" / "bloomberg_reference_sample.json"
 
 # Canonical MarketPulse ticker -> Bloomberg identifier
 BLOOMBERG_IDENTIFIERS = {

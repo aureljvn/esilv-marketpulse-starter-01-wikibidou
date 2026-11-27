@@ -19,7 +19,7 @@ from providers.yahoo_provider import (
     fetch_yahoo_prices,
 )
 
-DATA_DIR = Path("data/sample")
+DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "sample"
 
 # These starter values mirror config/settings.yml.
 # settings.yml is a human-readable configuration contract in the CORE.
