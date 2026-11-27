@@ -1,22 +1,29 @@
 # MarketPulse CORE configuration contract.
 # This file is intentionally human-readable.
 # Parsing YAML is not required by the 18-hour CORE.
+# The active source is selected by DATA_SOURCE in src/main.py.
 
 app:
   name: MarketPulse
 
 market:
-  provider: csv
+  provider: bloomberg
+  access_mode: APPROVED_SAMPLE
   lookback: 1mo
   interval: 1d
 
   instrument:
     ticker: AAPL
     name: Apple Inc.
+    bloomberg_identifier: AAPL US Equity
+    yahoo_symbol: AAPL
 
   benchmark:
     ticker: SP500
     name: S&P 500
+    bloomberg_identifier: SPX Index
+    yahoo_symbol: ^GSPC
 
 data:
-  file: data/sample/prices.csv
+  bloomberg_sample: data/sample/bloomberg_reference_sample.json
+  csv_fallback: data/sample/prices.csv
