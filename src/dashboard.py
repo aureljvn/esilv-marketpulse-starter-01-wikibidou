@@ -4,8 +4,8 @@ Presentation only: every business value comes from build_market_snapshot().
 No provider call and no analytical formula belong in this file.
 """
 
-from dash import Dash, dcc, html
 import plotly.graph_objects as go
+from dash import Dash, dcc, html
 
 from main import build_market_snapshot
 
@@ -38,14 +38,8 @@ CARD_STYLE = {
 context = html.Div(
     [
         html.P(f"Provider: {provider} - {access_mode}"),
-        html.P(
-            f"Instrument: "
-            f"{instrument['ticker']} - {instrument['name']}"
-        ),
-        html.P(
-            f"Benchmark: "
-            f"{benchmark['ticker']} - {benchmark['name']}"
-        ),
+        html.P(f"Instrument: {instrument['ticker']} - {instrument['name']}"),
+        html.P(f"Benchmark: {benchmark['ticker']} - {benchmark['name']}"),
         html.P(f"Lookback: {lookback}"),
         html.P(f"Interval: {interval}"),
     ]

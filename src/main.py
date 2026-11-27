@@ -1,6 +1,6 @@
-from pathlib import Path
 import csv
 import json
+from pathlib import Path
 
 from analytics import (
     align_series,
@@ -10,11 +10,17 @@ from analytics import (
 )
 from providers.bloomberg_provider import (
     ACCESS_MODE as BLOOMBERG_ACCESS_MODE,
+)
+from providers.bloomberg_provider import (
     PROVIDER_LABEL as BLOOMBERG_PROVIDER_LABEL,
+)
+from providers.bloomberg_provider import (
     fetch_bloomberg_prices,
 )
 from providers.yahoo_provider import (
     PROVIDER_LABEL as YAHOO_PROVIDER_LABEL,
+)
+from providers.yahoo_provider import (
     YAHOO_SYMBOLS,
     fetch_yahoo_prices,
 )
@@ -85,10 +91,7 @@ def get_last_date(prices):
 
 
 def load_csv_series(instrument, benchmark):
-    normalized_prices = [
-        normalize_price_row(row)
-        for row in load_prices()
-    ]
+    normalized_prices = [normalize_price_row(row) for row in load_prices()]
 
     instrument_prices = filter_prices(normalized_prices, instrument["ticker"])
     benchmark_prices = filter_prices(normalized_prices, benchmark["ticker"])
@@ -144,8 +147,8 @@ def build_market_snapshot(data_source=DATA_SOURCE):
     instrument = instruments["instrument"]
     benchmark = instruments["benchmark"]
 
-    provider, access_mode, instrument_prices, benchmark_prices = (
-        load_provider_series(data_source, instrument, benchmark)
+    provider, access_mode, instrument_prices, benchmark_prices = load_provider_series(
+        data_source, instrument, benchmark
     )
 
     aligned_instrument, aligned_benchmark = align_series(

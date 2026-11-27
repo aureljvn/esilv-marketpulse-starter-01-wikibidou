@@ -8,13 +8,15 @@ observation_date / open_value / ... are teaching wrapper keys, not
 Bloomberg field mnemonics.
 """
 
-from pathlib import Path
 import json
+from pathlib import Path
 
 PROVIDER_LABEL = "Bloomberg stage"
 ACCESS_MODE = "APPROVED_SAMPLE"
 
-SAMPLE_PATH = Path(__file__).resolve().parents[2] / "data" / "sample" / "bloomberg_reference_sample.json"
+SAMPLE_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "sample" / "bloomberg_reference_sample.json"
+)
 
 # Canonical MarketPulse ticker -> Bloomberg identifier
 BLOOMBERG_IDENTIFIERS = {
@@ -36,9 +38,7 @@ def fetch_raw_bloomberg_history(
     already covers the common 1-month daily window.
     """
     if ACCESS_MODE != "APPROVED_SAMPLE":
-        raise NotImplementedError(
-            "LIVE Bloomberg access is not available in this environment"
-        )
+        raise NotImplementedError("LIVE Bloomberg access is not available in this environment")
 
     with open(SAMPLE_PATH, encoding="utf-8") as file:
         fixture = json.load(file)
@@ -56,23 +56,22 @@ def normalize_bloomberg_history(
 ):
     """Normalization boundary: teaching wrapper keys -> canonical rows."""
     if raw_data["canonical_ticker"] != canonical_ticker:
-        raise ValueError(
-            f"Series is for {raw_data['canonical_ticker']}, "
-            f"not {canonical_ticker}"
-        )
+        raise ValueError(f"Series is for {raw_data['canonical_ticker']}, not {canonical_ticker}")
 
     rows = []
 
     for observation in raw_data["observations"]:
-        rows.append({
-            "date": observation["observation_date"],
-            "ticker": canonical_ticker,
-            "open": float(observation["open_value"]),
-            "high": float(observation["high_value"]),
-            "low": float(observation["low_value"]),
-            "close": float(observation["close_value"]),
-            "volume": int(observation["volume_value"]),
-        })
+        rows.append(
+            {
+                "date": observation["observation_date"],
+                "ticker": canonical_ticker,
+                "open": float(observation["open_value"]),
+                "high": float(observation["high_value"]),
+                "low": float(observation["low_value"]),
+                "close": float(observation["close_value"]),
+                "volume": int(observation["volume_value"]),
+            }
+        )
 
     if not rows:
         raise ValueError(f"No Bloomberg-stage rows for {canonical_ticker}")
